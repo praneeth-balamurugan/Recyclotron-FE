@@ -1,0 +1,28 @@
+nav {
+  ul {
+    list-style: none;
+
+    li {
+      a {
+        cursor: pointer;
+        color: #000;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1.3px;
+        &:hover {
+          color: #3da35d;
+          text-decoration: underline;
+        }
+
+      }
+      .logout {
+        &:hover {
+          color: #154223;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

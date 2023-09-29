@@ -1,0 +1,42 @@
+<p-toast></p-toast>
+<section class="text-center md:text-center">
+  <div class="flex flex-column md:flex-row justify-content-evenly">
+    <div class="detail">
+      <h2>{{ userDetail?.userName }}</h2>
+      <h3>( {{ userDetail?.email }} )</h3>
+      <h3>
+        {{ userDetail?.industryName }} - {{ userDetail?.industryLocation }}
+      </h3>
+    </div>
+    <div class="buttons flex flex-column ml-5 lg:ml-0">
+      <button
+        class="mt-2"
+        mat-flat-button
+        color="primary"
+        (click)="openEditDetails()"
+      >
+        <mat-icon>edit</mat-icon> Edit My Details
+      </button>
+      <button
+        class="mt-2"
+        mat-flat-button
+        color="warn"
+        *ngIf="!userDetail?.isAdmin"
+        (click)="openScrapAvailability()"
+      >
+        <mat-icon>add</mat-icon> Scrap Availability
+      </button>
+      <button
+        class="mt-2"
+        mat-flat-button
+        *ngIf="userDetail?.isAdmin"
+        color="accent"
+        (click)="openAddAdminDialog()"
+      >
+        <mat-icon>person_add</mat-icon> Add New Admin
+      </button>
+    </div>
+  </div>
+  <app-user-added-scrap *ngIf="!userDetail?.isAdmin"></app-user-added-scrap>
+  <app-admin-scrap-table *ngIf="userDetail?.isAdmin"></app-admin-scrap-table>
+</section>

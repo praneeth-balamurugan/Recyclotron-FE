@@ -1,0 +1,20 @@
+section {
+  mat-card {
+    width: 60%;
+    margin: auto;
+    min-height: 80vh;
+    margin-top: 30px;
+    text-align: center;
+
+    mat-card-content {
+      width: 70%;
+      margin: auto;
+      text-align: justify;
+    }
+  }
+  @media (max-width: 700px) {
+    mat-card {
+      width: 90%;
+    }
+  }
+}

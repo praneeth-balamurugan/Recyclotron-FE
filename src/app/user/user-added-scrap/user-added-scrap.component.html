@@ -1,0 +1,75 @@
+<h2 class="mt-5 font-semibold" *ngIf="!isScrapAvailable">
+  No Scraps Added By You!
+</h2>
+<h2 class="mt-5 font-semibold" *ngIf="isScrapAvailable">
+  Scraps Added by you,
+</h2>
+<div class="card mt-3" *ngIf="isScrapAvailable">
+  <p-table
+    [value]="userAddedScraps"
+    responsiveLayout="scroll"
+    [scrollable]="true"
+    scrollHeight="350px"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="product">
+          Product <p-sortIcon field="product"></p-sortIcon>
+        </th>
+        <th>Quantity</th>
+        <th>Location</th>
+        <th pSortableColumn="createdAt">
+          Created At <p-sortIcon field="createdAt"></p-sortIcon>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-scrap>
+      <tr>
+        <td>{{ scrap.product | titlecase }}</td>
+        <td>{{ scrap.quantity | titlecase }}</td>
+        <td>{{ scrap.location | titlecase }}</td>
+        <td>{{ scrap.createdAt }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-help p-button-outlined mr-2"
+            pTooltip="Edit Scrap Details"
+            (click)="userAddedScrap(scrap._id)"
+            *ngIf="!scrap.isLocked"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger p-button-outlined mr-2"
+            pTooltip="Delete Scrap"
+            (click)="openDeleteDialog(scrap._id)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-check"
+            class="p-button-rounded p-button-success p-button-outlined mr-2"
+            pTooltip="Your Scrap was Approved by Admin"
+            *ngIf="scrap.isLocked"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-info"
+            class="p-button-rounded p-button-secondary p-button-outlined mr-2"
+            pTooltip="Your Scrap was Pending or Rejected by Admin"
+            *ngIf="!scrap.isLocked"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

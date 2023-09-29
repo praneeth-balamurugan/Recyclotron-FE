@@ -1,0 +1,15 @@
+main {
+  min-height: 80vh;
+  width: 90%;
+  margin: auto;
+  .p-toolbar.p-component {
+    padding: 0.5rem !important;
+  }
+  .waste-product {
+    .image {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+  }
+}

@@ -1,0 +1,298 @@
+<div class="block-content">
+  <div class="ng-star-inserted">
+    <div class="surface-50 px-4 py-2 md:px-6 lg:px-8">
+      <div class="grid mr-3 ml-3">
+        <div class="col-12 lg:col-5 p-4">
+          <div class="surface-card border-round shadow-2 p-5">
+            <div class="border-bottom-1 pb-3 surface-border">
+              <span class="text-900 font-medium text-lg lg:text-xl">
+                <i class="pi pi-box text-xl mr-2 pt-2"></i>
+                About the Scrap
+              </span>
+            </div>
+            <div
+              class="flex flex-column lg:flex-row flex-wrap lg:align-items-center py-2 mt-3 border-bottom-1 surface-border"
+            >
+              <img
+                [src]="scrapDetail?.image"
+                class="w-10rem h-10rem flex-shrink-0 mb-3"
+              />
+              <div class="lg:ml-3">
+                <div class="mb-2">
+                  <span class="text-900 font-semibold"
+                    >{{ scrapDetail?.product | uppercase }}
+                  </span>
+                </div>
+                <div class="mb-2">
+                  <span class="text-900 font-medium">
+                    At, {{ scrapDetail?.location | titlecase }}
+                  </span>
+                </div>
+
+                <div class="text-600 text-sm mb-3">
+                  {{ scrapDetail?.quantity }}
+                </div>
+              </div>
+            </div>
+            <div class="py-2 mt-3 border-bottom-1 surface-border">
+              <div class="flex justify-content-between align-items-center mb-3">
+                <span class="text-900">User Name</span
+                ><span class="text-900">
+                  {{ scrapDetail?.creator.userName | titlecase }}
+                </span>
+              </div>
+              <div class="flex justify-content-between align-items-center mb-3">
+                <span class="text-900">User Email</span
+                ><span class="text-900">
+                  {{ scrapDetail?.creator.email | lowercase }}
+                </span>
+              </div>
+              <div class="flex justify-content-between align-items-center mb-3">
+                <span class="text-900">Industry Name</span
+                ><span class="text-900">
+                  {{ scrapDetail?.creator.industryName | titlecase }}
+                </span>
+              </div>
+              <div class="flex justify-content-between align-items-center mb-3">
+                <span class="text-900">Industry Location</span
+                ><span class="text-900">
+                  {{ scrapDetail?.creator.industryLocation | titlecase }}
+                </span>
+              </div>
+              <div class="flex justify-content-between align-items-center mb-3">
+                <span class="text-900">Phone Number</span
+                ><span class="text-900">
+                  {{ scrapDetail?.creator.phoneNo }}
+                </span>
+              </div>
+            </div>
+            <div class="py-2 mt-3 border-bottom-1 surface-border">
+              <div class="flex justify-content-between align-items-center mb-3">
+                <span class="text-900">Scrap Produced Time</span
+                ><span class="text-900">
+                  {{
+                    scrapDetail?.scrapProducedTime | date: "dd-MM-yy hh:mm a"
+                  }}
+                </span>
+              </div>
+              <div class="flex justify-content-between align-items-center mb-3">
+                <span class="text-900">Utilizable Time</span
+                ><span class="text-900">
+                  {{ scrapDetail?.utilizableTime | date: "dd-MM-yy hh:mm a" }}
+                </span>
+              </div>
+              <div class="flex justify-content-between align-items-center mb-3">
+                <span class="text-900">Transportation Available</span
+                ><span class="text-900 font-bold">
+                  {{ scrapDetail?.transportationAvailable }}
+                </span>
+              </div>
+            </div>
+            <div class="py-2 mt-3 border-bottom-1 surface-border">
+              <div class="text-900 font-medium mb-2">
+                Scrap Processing Description:
+              </div>
+              <div class="text-600 text-sm line-height-3 mb-2">
+                {{ scrapDetail?.scrapProcessingDescription }}
+              </div>
+            </div>
+            <div class="flex">
+              <button
+                pButton
+                pRipple
+                type="button"
+                label="Mail User"
+                class="p-button-help w-full mt-3 mr-2"
+              ></button>
+              <button
+                pButton
+                pRipple
+                type="button"
+                label="Delete Scrap"
+                class="p-button-danger w-full mt-3 mr-2"
+                (click)="openDeleteDialog()"
+              ></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 lg:col-7 p-4">
+          <div
+            class="surface-card grid formgrid p-fluid border-round shadow-2 p-4"
+          >
+            <div
+              class="col-12 mb-4 flex flex-column lg:flex-row align-items-center justify-content-between"
+            >
+              <div class="text-900 font-medium text-xl">
+                Approving Admin Details
+              </div>
+            </div>
+            <div class="col-12 field mb-0">
+              <label for="email2" class="text-900 font-medium mb-3">
+                Your Email
+              </label>
+              <input
+                id="email2"
+                type="text"
+                class="p-inputtext w-full mb-3"
+                [value]="adminDetail?.email"
+                [disabled]="true"
+              />
+              <label for="email2" class="text-900 font-medium mb-1">
+                Your Name
+              </label>
+              <input
+                id="email2"
+                type="text"
+                class="p-inputtext w-full mb-3"
+                [value]="adminDetail?.userName"
+                [disabled]="true"
+              />
+            </div>
+            <p-divider class="p-element w-full px-2"
+              ><div
+                role="separator"
+                class="p-divider p-component p-divider-horizontal p-divider-solid p-divider-left"
+              >
+                <div class="p-divider-content"></div></div
+            ></p-divider>
+            <div class="col-12 mt-4 lg:mt-0 mb-4">
+              <div class="text-900 font-medium text-xl">
+                Scrap Additonal Information's
+              </div>
+            </div>
+            <form [formGroup]="form">
+              <div class="grid">
+                <div class="col-12 lg:col-6 field mb-0">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Complexity</mat-label>
+                    <mat-select formControlName="complexity">
+                      <mat-option value="single Product">
+                        Single Product
+                      </mat-option>
+                      <mat-option value="mixed Product">
+                        Mixed Product
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 lg:col-6 field mb-0">
+                  <mat-form-field class="mt-1" appearance="outline">
+                    <mat-label>Edibility</mat-label>
+                    <mat-select formControlName="edibility">
+                      <mat-option value="edible">Edible</mat-option>
+                      <mat-option value="inedible">In-Edible</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 lg:col-6 field mb-0">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Origin</mat-label>
+                    <mat-select formControlName="origin">
+                      <mat-option value="animal based">Animal Based</mat-option>
+                      <mat-option value="plant based">Plant Based</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 lg:col-6 field mb-0">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Treatment</mat-label>
+                    <mat-select formControlName="treatment">
+                      <mat-option value="processed">Processed</mat-option>
+                      <mat-option value="unprocessed">Unprocessed</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 lg:col-6 field mb-0">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Packaging Degradability</mat-label>
+                    <mat-select formControlName="packagingDegradability">
+                      <mat-option value="biodegradable">
+                        Bio-Degradable
+                      </mat-option>
+                      <mat-option value="non biodegradable">
+                        Non Bio-Degradable
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 lg:col-6 field mb-0">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Stage Of Supply Chain</mat-label>
+                    <mat-select formControlName="stageOfSupplyChain">
+                      <mat-option value="cateringwaste">
+                        Catering Waste
+                      </mat-option>
+                      <mat-option value="non cateringwaste">
+                        Non Catering Waste
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 lg:col-6 field mb-0">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Packaging</mat-label>
+                    <mat-select formControlName="packaging">
+                      <mat-option value="packaged">Packaged</mat-option>
+                      <mat-option value="unpackaged">Unpackaged</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 lg:col-6 field mb-0">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Bio Degradability</mat-label>
+                    <mat-select formControlName="bioDegradability">
+                      <mat-option value="degradable">Degradable</mat-option>
+                      <mat-option value="non degradable">
+                        Non-degradable
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 field mb-3">
+                  <h4 class="mb-0">Process Parameter:</h4>
+                  <textarea
+                    rows="5"
+                    cols="30"
+                    pInputTextarea
+                    autoResize="autoResize"
+                    formControlName="detail"
+                  ></textarea>
+                </div>
+                <div class="col-12 field mb-2" *ngIf="!isLoading">
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    label="Submit"
+                    pTooltip="Submit Form"
+                    class="p-button-success w-2 mr-2"
+                    [disabled]="form.invalid"
+                    (click)="onSubmit()"
+                  ></button>
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    label="Clear"
+                    (click)="form.reset()"
+                    pTooltip="Clear Form Data"
+                    class="p-button-danger w-2 ml-2"
+                  ></button>
+                </div>
+                <div class="col-12 field mb-2" *ngIf="isLoading">
+                  <p-progressSpinner
+                    [style]="{ width: '50px', height: '50px' }"
+                    styleClass="custom-spinner"
+                    strokeWidth="8"
+                    fill="var(--surface-ground)"
+                    animationDuration=".5s"
+                  ></p-progressSpinner>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

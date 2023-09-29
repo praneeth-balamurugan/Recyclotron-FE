@@ -1,0 +1,40 @@
+<header>
+  <div class="top-section flex justify-content-between">
+    <div class="logo mt-2 ml-2 md:ml-5">
+      <img
+        src="assets/recylotron logo-01.png"
+        alt="Recyclotron logo"
+        [width]="40"
+      />
+    </div>
+    <div class="title uppercase mt-2">
+      <h2 class="font-bold mb-0">Recyclotron</h2>
+    </div>
+    <div class="hamburger-menu mr-3 mt-2">
+      <i class="pi pi-bars block lg:hidden" (click)="visibleSidebar = true"></i>
+    </div>
+  </div>
+  <app-navbar class="hidden lg:block"></app-navbar>
+  <p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="10000">
+    <nav>
+      <ul>
+        <li class="mr-4 ml-4">
+          <a (click)="onNavButtonClick()" routerLink="/">Home</a>
+        </li>
+        <li class="mr-4 ml-4">
+          <a (click)="onRoute('sc')">Scrap</a>
+        </li>
+        <li class="mr-4 ml-4"><a (click)="onRoute('about')">About</a></li>
+        <li class="mr-4 ml-4" *ngIf="!loginStatus">
+          <a (click)="openLoginDialog()">Login</a>
+        </li>
+        <li class="mr-4 ml-4" *ngIf="loginStatus">
+          <a (click)="openUserAccount()">Account</a>
+        </li>
+        <li class="mr-4 ml-4" *ngIf="loginStatus">
+          <a (click)="logoutUser()" class="logout">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </p-sidebar>
+</header>

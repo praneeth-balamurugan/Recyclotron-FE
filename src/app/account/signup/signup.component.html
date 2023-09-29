@@ -1,0 +1,119 @@
+<section>
+  <mat-card class="text-center shadow-6">
+    <mat-card-title>
+      <h1 class="font-semibold">Signup here,</h1>
+      <form [formGroup]="form">
+        <div class="grid">
+          <div class="col-12">
+            <div class="col-12 md:col-6 md:col-offset-3">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"
+                  ><i class="pi pi-user"></i
+                ></span>
+                <input
+                  type="text"
+                  pInputText
+                  formControlName="userName"
+                  placeholder="Your Name"
+                  autofocus
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="col-12 md:col-6 md:col-offset-3">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-at"></i></span>
+                <input
+                  type="text"
+                  pInputText
+                  formControlName="email"
+                  placeholder="Your Email"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="col-12 md:col-6 md:col-offset-3">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"
+                  ><i class="pi pi-eye"></i
+                ></span>
+                <input
+                  type="password"
+                  pInputText
+                  formControlName="password"
+                  placeholder="Create a new Password"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="col-12 md:col-6 md:col-offset-3">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"
+                  ><i class="pi pi-building"></i
+                ></span>
+                <input
+                  type="text"
+                  pInputText
+                  formControlName="industryName"
+                  placeholder="Industry Name"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="col-12 md:col-6 md:col-offset-3">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"
+                  ><i class="pi pi-map-marker"></i
+                ></span>
+                <input
+                  type="text"
+                  pInputText
+                  formControlName="industryLocation"
+                  placeholder="Industry Location"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="col-12 md:col-6 md:col-offset-3">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"
+                  ><i class="pi pi-book"></i
+                ></span>
+                <input
+                  type="number"
+                  pInputText
+                  formControlName="phoneNo"
+                  placeholder="Your Phone Number"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button">
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="form.invalid"
+            *ngIf="!isLoading"
+            (click)="onSubmit()"
+          >
+            Submit
+          </button>
+          <p-progressSpinner
+            *ngIf="isLoading"
+            [style]="{ width: '50px', height: '50px' }"
+            styleClass="custom-spinner"
+            strokeWidth="8"
+            fill="var(--surface-ground)"
+            animationDuration=".5s"
+          ></p-progressSpinner>
+        </div>
+      </form>
+    </mat-card-title>
+  </mat-card>
+</section>

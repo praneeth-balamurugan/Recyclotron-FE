@@ -1,0 +1,22 @@
+section {
+  .close-icon {
+    justify-content: flex-end;
+  }
+  h1 {
+    font-weight: 600;
+    margin: 0;
+  }
+  h4 {
+    margin: 0;
+    font-weight: 500;
+
+    a {
+      cursor: pointer;
+      color: blue;
+
+      &:active {
+        color: red;
+      }
+    }
+  }
+}

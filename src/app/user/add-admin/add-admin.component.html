@@ -1,0 +1,67 @@
+<p-toast></p-toast>
+<mat-card class="text-center shadow-6">
+  <div class="close-icon" mat-dialog-actions>
+    <button mat-icon-button color="warn" (click)="onClose()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+  <mat-card-title>
+    <h1 class="font-semibold">Add new admin here,</h1>
+    <form [formGroup]="form">
+      <div class="grid">
+        <div class="col-12">
+          <div class="col-12 md:col-8 md:col-offset-2">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+              <input
+                type="text"
+                pInputText
+                formControlName="adminName"
+                placeholder="Admin Name"
+                autofocus
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="col-12 md:col-8 md:col-offset-2">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"><i class="pi pi-at"></i></span>
+              <input
+                type="email"
+                pInputText
+                formControlName="email"
+                placeholder="Admin Email"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="col-12 md:col-8 md:col-offset-2">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"><i class="pi pi-eye"></i></span>
+              <input
+                type="password"
+                pInputText
+                formControlName="password"
+                placeholder="Create a new Password"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="form.invalid"
+          *ngIf="!isLoading"
+          (click)="onSubmit()"
+        >
+          Upload
+        </button>
+        <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+      </div>
+    </form>
+  </mat-card-title>
+</mat-card>

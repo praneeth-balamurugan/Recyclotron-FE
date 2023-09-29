@@ -1,0 +1,161 @@
+<section>
+  <mat-card class="shadow-7 mt-5">
+    <mat-card-title>
+      <h2 class="text-center font-semibold text-green-600" *ngIf="!editMode">
+        Add Your Scrap
+      </h2>
+      <h2 class="text-center font-semibold text-green-600" *ngIf="editMode">
+        Update Your Scrap
+      </h2>
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form">
+        <div class="grid p-fluid">
+          <div class="col-12">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"><i class="pi pi-book"></i></span>
+              <input
+                type="text"
+                pInputText
+                placeholder="Product"
+                formControlName="product"
+                autofocus
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"
+                ><i class="pi pi-map-marker"></i
+              ></span>
+              <input
+                type="text"
+                pInputText
+                placeholder="Location With Industry Name"
+                formControlName="location"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"><i class="pi pi-box"></i></span>
+              <input
+                type="text"
+                pInputText
+                placeholder="Quantity"
+                formControlName="quantity"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"
+                ><i class="pi pi-clock"></i
+              ></span>
+              <p-calendar
+                [showTime]="true"
+                [showSeconds]="true"
+                dateFormat="dd-mm-yy"
+                inputId="time"
+                placeholder="Scrap Time"
+                formControlName="scrapProducedTime"
+              ></p-calendar>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"
+                ><i class="pi pi-calendar-times"></i
+              ></span>
+              <p-calendar
+                [showTime]="true"
+                [showSeconds]="true"
+                dateFormat="dd-mm-yy"
+                inputId="time"
+                placeholder="Utilizable Time"
+                formControlName="utilizableTime"
+              ></p-calendar>
+            </div>
+          </div>
+          <div class="col-12">
+            <h3>Transportation Available</h3>
+            <p-selectButton
+              [options]="transportationOptions"
+              formControlName="transportationOptions"
+            ></p-selectButton>
+          </div>
+          <div class="col-12">
+            <h3>Process Parameter</h3>
+            <textarea
+              rows="5"
+              cols="30"
+              pInputTextarea
+              autoResize="autoResize"
+              formControlName="processParameter"
+            ></textarea>
+          </div>
+          <!-- <div class="col-12 flex">
+            <div>
+              <h3>Scrap Image</h3>
+              <p-fileUpload
+                mode="basic"
+                name="demo"
+                accept="image/*"
+                maxFileSize="2000000"
+                customUpload="true"
+                (uploadHandler)="onUpload($event)"
+                chooseLabel="Upload Scrap Image"
+                [auto]="true"
+                [disabled]="editMode"
+              >
+              </p-fileUpload>
+            </div>
+            <img [src]="imageDisplay" class="ml-3" [width]="100" alt="" />
+          </div> -->
+          <div class="button text-center mt-3" *ngIf="!isLoading">
+            <button
+              mat-flat-button
+              color="primary"
+              class="mr-3"
+              pTooltip="Upload data"
+              [disabled]="form.invalid"
+              (click)="onSubmit()"
+              *ngIf="!editMode"
+            >
+              Upload
+            </button>
+            <button
+              mat-flat-button
+              color="accent"
+              class="mr-3"
+              pTooltip="Update data"
+              [disabled]="form.invalid"
+              (click)="onSubmit()"
+              *ngIf="editMode"
+            >
+              Update
+            </button>
+            <button
+              mat-flat-button
+              color="warn"
+              class="mr-3"
+              pTooltip="Clear Form"
+              (click)="form.reset()"
+            >
+              Clear
+            </button>
+          </div>
+          <div class="button text-center mt-3" *ngIf="isLoading">
+            <p-progressSpinner
+              [style]="{ width: '50px', height: '50px' }"
+              styleClass="custom-spinner"
+              strokeWidth="8"
+              fill="var(--surface-ground)"
+              animationDuration=".5s"
+            ></p-progressSpinner>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>

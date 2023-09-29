@@ -1,0 +1,15 @@
+section {
+  mat-card {
+    max-width: 800px;
+    margin: auto;
+    min-height: 80vh;
+
+    .grid {
+      max-width: 400px;
+      margin: auto;
+      h3 {
+        margin: 0;
+      }
+    }
+  }
+}

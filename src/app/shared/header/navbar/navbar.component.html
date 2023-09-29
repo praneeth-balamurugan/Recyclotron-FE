@@ -1,0 +1,17 @@
+<p-toast></p-toast>
+<nav>
+  <ul class="flex justify-content-center nav">
+    <li class="mr-4 ml-4"><a routerLink="/">Home</a></li>
+    <li class="mr-4 ml-4"><a routerLink="sc">Scrap</a></li>
+    <li class="mr-4 ml-4"><a routerLink="about">About</a></li>
+    <li class="mr-4 ml-4" *ngIf="!loginStatus">
+      <a (click)="openLoginDialog()">Login</a>
+    </li>
+    <li class="mr-4 ml-4" *ngIf="loginStatus">
+      <a (click)="openUserAccount()">Account</a>
+    </li>
+    <li class="mr-4 ml-4" *ngIf="loginStatus">
+      <a (click)="logoutUser()" class="logout">Logout</a>
+    </li>
+  </ul>
+</nav>

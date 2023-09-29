@@ -1,0 +1,112 @@
+<app-no-scrap *ngIf="wasteAvailable <= 0"></app-no-scrap>
+<main *ngIf="wasteAvailable > 0" class="mt-4">
+  <p-toolbar>
+    <div class="p-toolbar-group-left hidden md:block">
+      <p-dropdown
+        [options]="availableFilters"
+        placeholder="Select Quantity"
+        optionLabel="quantity"
+        optionValue="quantity"
+        (onChange)="onQuantityChange($event)"
+        [virtualScroll]="true"
+        itemSize="5"
+        [showClear]="true"
+        class="mr-2"
+      ></p-dropdown>
+      <p-dropdown
+        [options]="availableFilters"
+        placeholder="Select a Location"
+        optionLabel="location"
+        optionValue="location"
+        (onChange)="onLocationChange($event)"
+        [virtualScroll]="true"
+        itemSize="5"
+        [showClear]="true"
+        class="mr-2"
+      ></p-dropdown>
+      <p-dropdown
+        [options]="wasteBased"
+        placeholder="Waste Based"
+        (onChange)="onWasteBasedChange($event)"
+        [showClear]="true"
+        class="mr-2"
+      ></p-dropdown>
+    </div>
+
+    <div class="p-toolbar-group-right mt-0 md:mt-2 lg:mt-0">
+      <form [formGroup]="searchString">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            type="text"
+            pInputText
+            formControlName="search"
+            placeholder="Search"
+          />
+        </span>
+      </form>
+    </div>
+  </p-toolbar>
+  <p-divider></p-divider>
+  <section>
+    <h2
+      *ngIf="wastes.length <= 0"
+      class="text-center mt-3 font-normal text-700"
+    >
+      No Scraps found, <br />
+      Starting With '<span class="font-semibold">{{ searchQuery }}</span
+      >'
+    </h2>
+    <div class="block-content" *ngIf="wastes.length > 0">
+      <div class="lg:px-8 md:px-6 px-4 py-2 surface-ground ng-star-inserted">
+        <div class="surface-ground">
+          <div class="grid">
+            <div
+              class="col-12 md:col-4 xl:col-3 p-3"
+              *ngFor="let waste of wastes"
+            >
+              <div
+                class="surface-card shadow-2 border-rounded p-3 waste-product"
+                style="border-radius: 6px"
+              >
+                <img
+                  [src]="waste?.scrapId.image"
+                  [alt]="waste?.scrapId.product"
+                  class="mb-1 w-full image"
+                />
+                <div class="flex justify-content-between align-items-center">
+                  <div>
+                    <div class="text-xl font-medium text-900">
+                      {{ waste?.scrapId.product | titlecase }}
+                    </div>
+                  </div>
+
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-info-circle"
+                    class="p-button-rounded p-button-danger p-button-text cursor-pointer"
+                    (click)="onProductClicked(waste._id)"
+                  ></button>
+                </div>
+                <ul class="list-none m-0 p-0">
+                  <li
+                    class="px-0 pb-1 flex justify-content-between align-items-center border-bottom-1 surface-border"
+                  >
+                    <span class="text-600 font-medium text-sm">
+                      {{ waste?.scrapId.quantity }}
+                    </span>
+                    <span class="text-900 font-medium text-sm">
+                      {{ waste?.scrapId.location | titlecase }}
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

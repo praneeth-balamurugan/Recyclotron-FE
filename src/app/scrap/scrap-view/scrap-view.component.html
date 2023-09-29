@@ -1,0 +1,206 @@
+<div class="block-content">
+  <div class="ng-star-inserted">
+    <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+      <div class="w-full lg:hidden">
+        <div class="text-900 text-3xl mb-2 font-medium">
+          {{ wasteProduct?.scrapId.product | titlecase }}
+          (<span class="text-700 text-3xl mb-2 font-medium">
+            {{ wasteProduct?.scrapId.location | titlecase }} </span
+          >)
+        </div>
+        <ul class="list-disc mb-6">
+          <li>
+            <p class="text-600 text-xl line-height-3">
+              {{ wasteProduct?.scrapId.scrapProcessingDescription }}
+            </p>
+          </li>
+          <li>
+            <p class="text-600 text-xl line-height-3">
+              {{ wasteProduct?.detail }}
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="grid justify-content-center flex-column lg:flex-row">
+        <div class="col-12 lg:col-6 py-4 lg:pr-4 flex-order-2 lg:flex-order-1">
+          <div class="w-full hidden lg:block">
+            <div class="text-900 text-3xl mb-2 font-medium">
+              {{ wasteProduct?.scrapId.product | titlecase }}
+              (<span class="text-700 text-3xl mb-2 font-medium">
+                {{ wasteProduct?.scrapId.location | titlecase }} </span
+              >)
+            </div>
+            <ul class="list-disc mb-6">
+              <li>
+                <p class="text-600 text-xl line-height-3">
+                  {{ wasteProduct?.scrapId.scrapProcessingDescription }}
+                </p>
+              </li>
+              <li>
+                <p class="text-600 text-xl line-height-3">
+                  {{ wasteProduct?.detail }}
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="flex px-5 py-2">
+            <i class="pi pi-box text-4xl font-bold text-900"></i>
+            <div class="ml-5">
+              <div class="text-900 font-medium mb-2 text-2xl">
+                About Product
+              </div>
+              <div class="col-12">
+                <table class="w-full">
+                  <tr>
+                    <td class="text-800 text-lg p-2 font-medium w-7">
+                      Scrap Quantity
+                    </td>
+                    <td class="text-600 p-2">
+                      {{ wasteProduct?.scrapId.scrapProcessingDescription }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-800 text-lg p-2 font-medium w-7">
+                      Scrap Produced Time
+                    </td>
+                    <td class="text-600 p-2">
+                      {{
+                        wasteProduct?.scrapId.scrapProducedTime
+                          | date: "dd-MM-yy hh:mm a"
+                      }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-800 text-lg p-2 font-medium w-7">
+                      Scrap Utilizable Time
+                    </td>
+                    <td class="text-600 p-2">
+                      {{
+                        wasteProduct?.scrapId.utilizableTime
+                          | date: "dd-MM-yy hh:mm a"
+                      }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-800 text-lg p-2 font-medium w-7">
+                      Transportation
+                    </td>
+                    <td
+                      class="text-800 p-2"
+                      *ngIf="
+                        wasteProduct?.scrapId.transportationAvailable === 'Yes'
+                      "
+                    >
+                      Yes Available
+                    </td>
+                    <td
+                      class="text-800 p-2"
+                      *ngIf="
+                        wasteProduct?.scrapId.transportationAvailable === 'No'
+                      "
+                    >
+                      Not Available
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-800 text-lg p-2 font-medium w-7">
+                      Edibility
+                    </td>
+                    <td class="text-600 p-2">
+                      {{ wasteProduct?.edibility | titlecase }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-800 text-lg p-2 font-medium w-7">Origin</td>
+                    <td class="text-600 p-2">
+                      {{ wasteProduct?.origin | titlecase }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-800 text-lg p-2 font-medium w-7">
+                      Complexity
+                    </td>
+                    <td class="text-600 p-2">
+                      {{ wasteProduct?.complexity | titlecase }}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="flex px-5 py-2">
+            <i class="pi pi-user text-4xl font-bold mb-2 text-900"></i>
+            <div class="ml-5">
+              <div class="text-900 font-medium mb-2 text-2xl">
+                About Uploader
+              </div>
+              <div class="col-12">
+                <table class="w-full">
+                  <tr>
+                    <td class="text-800 text-lg p-2 font-medium w-7">
+                      User Name
+                    </td>
+                    <td class="text-600 p-2">
+                      {{ wasteProduct?.scrapId.creator.userName }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-800 text-lg p-2 font-medium w-7">
+                      User Email
+                    </td>
+                    <td class="text-600 p-2">
+                      {{ wasteProduct?.scrapId.creator.email }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-800 text-lg p-2 font-medium w-7">
+                      User Phone Number
+                    </td>
+                    <td class="text-600 p-2">
+                      {{ wasteProduct?.scrapId.creator.phoneNo }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-800 text-lg p-2 font-medium w-7">
+                      User Industry Name
+                    </td>
+                    <td class="text-600 p-2">
+                      {{ wasteProduct?.scrapId.creator.industryName }}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 lg:col-6 flex-order-1 mt-0 lg:mt-5 lg:flex-order-2">
+          <img
+            [src]="wasteProduct?.scrapId.image"
+            [alt]="wasteProduct?.scrapId.product"
+            class="border-round w-full mt-0 lg:mt-5"
+          />
+          <div class="flex mt-5 mb-5">
+            <button
+              pbutton
+              label="Buy Now"
+              class="p-element w-6 mr-2 p-button p-button-outlined p-component"
+            >
+              <span class="p-button-label"
+                ><i class="pi pi-phone"></i> Contact</span
+              >
+            </button>
+            <button
+              pbutton
+              label="Buy Now"
+              class="p-element w-6 ml-2 p-button p-component"
+            >
+              <span class="p-button-label"
+                ><i class="pi pi-envelope"></i> Mail User</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

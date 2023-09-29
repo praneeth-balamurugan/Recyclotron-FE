@@ -1,0 +1,69 @@
+<h2 class="mt-5 font-semibold" *ngIf="!isScrapAvailable">
+  No Scrap available, All are Done!
+</h2>
+<h2 class="mt-5 font-semibold" *ngIf="isScrapAvailable">
+  Scraps need to be View,
+</h2>
+<div class="card mt-3" *ngIf="isScrapAvailable">
+  <p-table
+    [value]="enteredScraps"
+    responsiveLayout="scroll"
+    [scrollable]="true"
+    scrollHeight="350px"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="product">
+          Product <p-sortIcon field="product"></p-sortIcon>
+        </th>
+        <th pSortableColumn="quantity">
+          Quantity <p-sortIcon field="quantity"></p-sortIcon>
+        </th>
+        <th pSortableColumn="location">
+          Location <p-sortIcon field="location"></p-sortIcon>
+        </th>
+        <th pSortableColumn="createdAt">
+          Created At <p-sortIcon field="createdAt"></p-sortIcon>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-scrap>
+      <tr>
+        <td>{{ scrap.product | titlecase }}</td>
+        <td>{{ scrap.quantity | titlecase }}</td>
+        <td>{{ scrap.location | titlecase }}</td>
+        <td>{{ scrap.createdAt }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-eye"
+            class="p-button-rounded p-button-success p-button-outlined mr-2"
+            (click)="viewScrap(scrap._id)"
+            pTooltip="View Scrap"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-lock-open"
+            class="p-button-rounded p-button-info p-button-outlined mr-2"
+            (click)="openLockScrapConformationDialog(scrap._id)"
+            pTooltip="Lock Scrap"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger p-button-outlined mr-2"
+            (click)="openDeleteDialog(scrap._id)"
+            pTooltip="Delete Scrap"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
