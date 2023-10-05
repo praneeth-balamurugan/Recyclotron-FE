@@ -30,21 +30,17 @@ export class ScrapComponent implements OnInit {
   ngOnInit(): void {
     this._searchQuery();
     this.scrapService.getAllScraps().subscribe((res) => {
-      this.wasteAvailable = res.wastes.length;
-      if (res.wastes.length > 0) {
-        this.wastesBeforeQuering = res.wastes;
+      this.wasteAvailable = res.scraps.length;
+      console.log(res.scraps.length);
+      
+      if (res.scraps.length > 0) {
+        this.wastesBeforeQuering = res.scraps;
         this.wastes = this.wastesBeforeQuering;
-        res.wastes.forEach((w) => {
+        res.scraps.forEach((w) => {
+          
           this.availableFilters.push(w.scrapId);
         });
       }
-    },
-    (err) => {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: err.error.message,
-      });
     }
     );
   }

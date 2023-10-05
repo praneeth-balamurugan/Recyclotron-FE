@@ -10,6 +10,7 @@ import { Waste } from '../waste.model';
 })
 export class UserService {
   BACKEND_URL = environment.BACKEND_URL;
+  adminId:string;
 
   constructor(private http: HttpClient) {}
 

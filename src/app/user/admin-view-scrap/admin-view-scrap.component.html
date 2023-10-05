@@ -38,47 +38,41 @@
               <div class="flex justify-content-between align-items-center mb-3">
                 <span class="text-900">User Name</span
                 ><span class="text-900">
-                  {{ scrapDetail?.creator.userName | titlecase }}
+                  {{ userDetail?.userName | titlecase }}
                 </span>
               </div>
               <div class="flex justify-content-between align-items-center mb-3">
                 <span class="text-900">User Email</span
                 ><span class="text-900">
-                  {{ scrapDetail?.creator.email | lowercase }}
+                  {{ userDetail?.email | lowercase }}
                 </span>
               </div>
               <div class="flex justify-content-between align-items-center mb-3">
                 <span class="text-900">Industry Name</span
                 ><span class="text-900">
-                  {{ scrapDetail?.creator.industryName | titlecase }}
+                  {{ userDetail?.industryName | titlecase }}
                 </span>
               </div>
               <div class="flex justify-content-between align-items-center mb-3">
                 <span class="text-900">Industry Location</span
                 ><span class="text-900">
-                  {{ scrapDetail?.creator.industryLocation | titlecase }}
+                  {{ userDetail?.industryLocation | titlecase }}
                 </span>
               </div>
               <div class="flex justify-content-between align-items-center mb-3">
                 <span class="text-900">Phone Number</span
                 ><span class="text-900">
-                  {{ scrapDetail?.creator.phoneNo }}
+                  {{ userDetail?.phoneNo }}
                 </span>
               </div>
             </div>
             <div class="py-2 mt-3 border-bottom-1 surface-border">
               <div class="flex justify-content-between align-items-center mb-3">
-                <span class="text-900">Scrap Produced Time</span
+                <span class="text-900">Scrap Created Time</span
                 ><span class="text-900">
                   {{
-                    scrapDetail?.scrapProducedTime | date: "dd-MM-yy hh:mm a"
+                    scrapDetail?.createdAt | date: "dd-MM-yy hh:mm a"
                   }}
-                </span>
-              </div>
-              <div class="flex justify-content-between align-items-center mb-3">
-                <span class="text-900">Utilizable Time</span
-                ><span class="text-900">
-                  {{ scrapDetail?.utilizableTime | date: "dd-MM-yy hh:mm a" }}
                 </span>
               </div>
               <div class="flex justify-content-between align-items-center mb-3">
@@ -88,22 +82,7 @@
                 </span>
               </div>
             </div>
-            <div class="py-2 mt-3 border-bottom-1 surface-border">
-              <div class="text-900 font-medium mb-2">
-                Scrap Processing Description:
-              </div>
-              <div class="text-600 text-sm line-height-3 mb-2">
-                {{ scrapDetail?.scrapProcessingDescription }}
-              </div>
-            </div>
             <div class="flex">
-              <button
-                pButton
-                pRipple
-                type="button"
-                label="Mail User"
-                class="p-button-help w-full mt-3 mr-2"
-              ></button>
               <button
                 pButton
                 pRipple

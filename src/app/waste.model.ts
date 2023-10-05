@@ -15,4 +15,6 @@ export interface Waste {
   scrapId?: string | Scrap;
   ApprovedAdminId?: string | User;
   createdAt?: string;
+  image: String;
+  product: String;
 }

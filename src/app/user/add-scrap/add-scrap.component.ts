@@ -74,7 +74,7 @@ export class AddScrapComponent implements OnInit {
   onUpload(event: any) {
     const file = event.files[0];
     this.form.patchValue({ image: file });
-    this.form.get('image').updateValueAndValidity();
+    this.form.get('image')?.updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
       this.imageDisplay = reader.result as string;
@@ -119,8 +119,10 @@ export class AddScrapComponent implements OnInit {
       transportationOptions: f.transportationOptions,
       location: f.location,
       createdAt: this.currentDateTime,
-      creator: this.id
+      creator: this.id,
+      image: this.imageDisplay
     }
+console.log(scrapForm);
 
 
       this.userService.addNewScrap(scrapForm).subscribe(

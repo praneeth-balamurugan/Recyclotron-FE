@@ -50,24 +50,6 @@
             pTooltip="Delete Scrap"
             (click)="openDeleteDialog(scrap._id)"
           ></button>
-          <button
-            pButton
-            pRipple
-            type="button"
-            icon="pi pi-check"
-            class="p-button-rounded p-button-success p-button-outlined mr-2"
-            pTooltip="Your Scrap was Approved by Admin"
-            *ngIf="scrap.isLocked"
-          ></button>
-          <button
-            pButton
-            pRipple
-            type="button"
-            icon="pi pi-info"
-            class="p-button-rounded p-button-secondary p-button-outlined mr-2"
-            pTooltip="Your Scrap was Pending or Rejected by Admin"
-            *ngIf="!scrap.isLocked"
-          ></button>
         </td>
       </tr>
     </ng-template>

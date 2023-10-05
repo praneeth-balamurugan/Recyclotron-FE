@@ -30,6 +30,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-scrap>
       <tr>
+        
         <td>{{ scrap.product | titlecase }}</td>
         <td>{{ scrap.quantity | titlecase }}</td>
         <td>{{ scrap.location | titlecase }}</td>
@@ -44,15 +45,7 @@
             (click)="viewScrap(scrap._id)"
             pTooltip="View Scrap"
           ></button>
-          <button
-            pButton
-            pRipple
-            type="button"
-            icon="pi pi-lock-open"
-            class="p-button-rounded p-button-info p-button-outlined mr-2"
-            (click)="openLockScrapConformationDialog(scrap._id)"
-            pTooltip="Lock Scrap"
-          ></button>
+          
           <button
             pButton
             pRipple

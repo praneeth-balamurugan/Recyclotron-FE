@@ -19,7 +19,6 @@
                 pInputText
                 placeholder="Product"
                 formControlName="product"
-                autofocus
               />
             </div>
           </div>
@@ -94,14 +93,14 @@
               formControlName="processParameter"
             ></textarea>
           </div>
-          <!-- <div class="col-12 flex">
+          <div class="col-12 flex">
             <div>
               <h3>Scrap Image</h3>
               <p-fileUpload
                 mode="basic"
                 name="demo"
                 accept="image/*"
-                maxFileSize="2000000"
+                maxFileSize="1000000"
                 customUpload="true"
                 (uploadHandler)="onUpload($event)"
                 chooseLabel="Upload Scrap Image"
@@ -111,7 +110,7 @@
               </p-fileUpload>
             </div>
             <img [src]="imageDisplay" class="ml-3" [width]="100" alt="" />
-          </div> -->
+          </div>
           <div class="button text-center mt-3" *ngIf="!isLoading">
             <button
               mat-flat-button

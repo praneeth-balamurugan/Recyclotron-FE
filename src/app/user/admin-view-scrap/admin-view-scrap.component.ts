@@ -20,6 +20,7 @@ export class AdminViewScrapComponent implements OnInit {
   adminId: string;
   scrapDetail: Scrap;
   adminDetail: User;
+  userDetail: User;
   form: FormGroup;
   isLoading: boolean;
   currentDateTime: string;
@@ -44,24 +45,21 @@ export class AdminViewScrapComponent implements OnInit {
           this.userService
             .getScrapDetailById(params['sid'])
             .subscribe((res) => {
-              if (res.scrap._id) {
-                this.scrapDetail = res.scrap;
+              console.log(res);
+              if (res.scrap[0]._id) {
+                this.scrapDetail = res.scrap[0];
+                this.userService
+                  .getUserDetailById(res.scrap[0].creator)
+                  .subscribe((res) => {
+                    this.userDetail = res.user;
+                  });
               }
             });
-          this.userService.getUserDetailById(this.adminId).subscribe(
-            (res) => {
-              if (res.user._id) {
-                this.adminDetail = res.user;
-              }
-            },
-            (err) => {
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: err.error.message,
-              });
+          this.userService.getUserDetailById(this.adminId).subscribe((res) => {
+            if (res.user._id) {
+              this.adminDetail = res.user;
             }
-          );
+          });
         }
       },
       (err) => {
@@ -72,6 +70,7 @@ export class AdminViewScrapComponent implements OnInit {
         });
       }
     );
+    console.log(this.scrapDetail);
   }
 
   openDeleteDialog() {
@@ -88,9 +87,7 @@ export class AdminViewScrapComponent implements OnInit {
                   summary: 'Success',
                   detail: res.message,
                 });
-                window.setTimeout(() => {
                   this.router.navigate(['u/' + this.adminId]);
-                }, 2500);
               } else {
                 this.messageService.add({
                   severity: 'error',
@@ -118,7 +115,7 @@ export class AdminViewScrapComponent implements OnInit {
       }
     );
   }
-
+  
   onSubmit() {
     this.isLoading = true;
     if (this.form.invalid) return;
@@ -129,8 +126,13 @@ export class AdminViewScrapComponent implements OnInit {
     );
 
     const f = this.form.value;
-
+      console.log(f);
+      console.log(this.scrapDetail);
+      
+      
     const form: Waste = {
+      product: this.scrapDetail.product,
+      image: this.scrapDetail.image,
       edibility: f.edibility,
       origin: f.origin,
       complexity: f.complexity,

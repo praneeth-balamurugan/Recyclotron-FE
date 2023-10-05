@@ -25,17 +25,21 @@ export class AdminScrapTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getAllScraps().subscribe((res) => {
-      if (res.scraps.length > 0) {
+    this.userService.getAllScraps().subscribe((res: any) => {
+      if (res.scraps.length) {
+        
         for (let scraps of res.scraps) {
-          if (scraps.isLocked === false) {
+          if (scraps.isLocked === "false") {
             this.enteredScraps.push(scraps);
           }
         }
+        
       }
       if (this.enteredScraps.length > 0) {
         this.isScrapAvailable = true;
       }
+      console.log(this.enteredScraps.length);
+      
     },
     (err) => {
       this.messageService.add({
