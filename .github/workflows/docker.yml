@@ -1,0 +1,17 @@
+name: Deploy node application
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build docker image
+        run: docker build -t bpraneeth/recyclotron-fe .
+      - name: Push docker image
+        run: docker push bpraneeth/recyclotron-fe:latest
